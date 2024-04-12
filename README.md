@@ -1,9 +1,8 @@
-````markdown
-# Módulo de Mesas para Restaurante
+# Restaurant Tables Module
 
-![Restaurant Tables Module](https://example.com/restaurant-tables-logo.png)
+Módulo de Mesas para Restaurante
 
-Este módulo de mesas para restaurante es una solución completa para la gestión eficiente de las mesas en un entorno de restaurante. Con capacidades para asignar o reservar mesas, generar facturas, llevar un historial de acciones en el sistema y gestionar tipos de mesas y clientes, es una herramienta imprescindible para cualquier establecimiento gastronómico.
+Este módulo de mesas para restaurante proporciona una solución completa para gestionar eficientemente las mesas en un entorno de restaurante. Con capacidades para asignar o reservar mesas, generar facturas, mantener un historial de acciones en el sistema y gestionar tipos de mesas y clientes, es una herramienta imprescindible para cualquier establecimiento gastronómico.
 
 ## Características Principales
 
@@ -94,4 +93,3 @@ Sigue estos pasos para instalar y configurar el módulo en tu proyecto Laravel:
 ## Contribución
 
 Si encuentras algún error o tienes alguna sugerencia para mejorar este módulo, ¡no dudes en contribuir! Abre un issue o envía una pull request con tus cambios.
-````

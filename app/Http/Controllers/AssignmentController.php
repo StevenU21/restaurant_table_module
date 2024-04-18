@@ -13,7 +13,7 @@ class AssignmentController extends Controller
 {
     public function index()
     {
-        $assignments = Assignment::with('table', 'client', 'user')->get();
+        $assignments = Assignment::with('table', 'client', 'user')->paginate(5);
         return view('assignments.index', compact('assignments'));
     }
 

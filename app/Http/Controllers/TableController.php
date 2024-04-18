@@ -11,7 +11,7 @@ class TableController extends Controller
 {
     public function index()
     {
-        $tables = Table::with('type')->get();
+        $tables = Table::with('type')->paginate(5);
         return view('tables.index', compact('tables'));
     }
 

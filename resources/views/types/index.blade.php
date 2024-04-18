@@ -131,8 +131,6 @@
                 </div>
             </div>
         </div>
-
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         @include('components.types.js.per-page-j-s')
         @include('components.types.js.autocomplete-j-s')
         @include('components.types.js.type-modal-j-s')

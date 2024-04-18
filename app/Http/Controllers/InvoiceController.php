@@ -9,7 +9,7 @@ class InvoiceController extends Controller
 {
     public function index()
     {
-        $invoices = Invoice::with('user', 'client', 'assignment')->get();
+        $invoices = Invoice::with('user', 'client', 'assignment')->paginate(5);
         return view('invoices.index', compact('invoices'));
     }
 

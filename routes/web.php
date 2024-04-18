@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\AuditController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ProfileController;
@@ -37,6 +38,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/search', [TypeController::class, 'search'])->name('types.search');
         Route::get('/autocomplete', [TypeController::class, 'autocomplete'])->name('types.autocomplete');
     });
+
+    Route::resource('/clients', ClientController::class);
 });
 
 require __DIR__ . '/auth.php';

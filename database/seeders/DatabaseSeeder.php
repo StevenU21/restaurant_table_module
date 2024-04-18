@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Client;
 use App\Models\Table;
 use App\Models\Type;
 use App\Models\User;
@@ -23,6 +24,8 @@ class DatabaseSeeder extends Seeder
             'password' => 'steven@gmail.com'
         ]);
 
-        Type::factory(20)->create();
+        Type::factory(500)->create();
+        Client::factory(100)->create();
+        Table::factory(500)->create();
     }
 }

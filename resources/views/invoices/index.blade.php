@@ -76,6 +76,11 @@
                         </tbody>
                     </table>
                 </div>
+                <div class="card-footer py-4">
+                    <nav aria-label="..." class="d-flex flex-wrap justify-content-center justify-content-lg-start">
+                        {{ $invoices->links() }}
+                    </nav>
+                </div>
             </div>
         </div>
     </div>

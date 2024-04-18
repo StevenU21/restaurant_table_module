@@ -16,29 +16,29 @@
     <link href="{{ asset('js/plugins/@fortawesome/fontawesome-free/css/all.min.css') }}" rel="stylesheet" />
     <!-- CSS Files -->
     <link href="{{ asset('css/argon-dashboard.css?v=1.1.2') }}" rel="stylesheet" />
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
         @keyframes toaster {
             0% {
                 transform: scale(0);
                 opacity: 0;
             }
-    
+
             50% {
                 transform: scale(1.05);
                 opacity: 1;
             }
-    
+
             75% {
                 transform: scale(0.95);
             }
-    
+
             100% {
                 transform: scale(1);
                 opacity: 1;
             }
         }
-    
+
         .modal.fade .modal-dialog {
             animation: toaster 0.5s ease-in-out;
         }

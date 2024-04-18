@@ -12,11 +12,11 @@
 
         <div class="col-lg-6">
             <div class="form-group">
-                <label class="form-control-label" for="type_id"><i class="fas fa-graduation-cap"></i>
-                    Tipo de Mesa</label>
+                <label class="form-control-label" for="type_id"><i class="fas fa-graduation-cap"></i> Tipo de
+                    Mesa</label>
 
-                <select name="type_id" id="type_id" class="form-control form-control-alternative">
-                    <option disabled>Selecionar un Tipo</option>
+                <select name="type_id" class="form-control form-control-alternative">
+                    <option disabled>Seleccionar un Tipo</option>
                     @foreach ($types as $type)
                         <option value="{{ $type->id }}"
                             {{ old('type_id', $table->type_id) == $type->id ? 'selected' : '' }}>
@@ -26,6 +26,7 @@
                 </select>
             </div>
         </div>
+
     </div>
 </div>
 <hr class="my-4" />

@@ -8,7 +8,7 @@ class AuditController extends Controller
 {
     public function index()
     {
-        $activities = Activity::latest()->paginate(5);
+        $activities = Activity::latest()->paginate(10);
 
         foreach ($activities as $activity) {
             $changes = json_decode($activity->changes(), true);

@@ -25,10 +25,17 @@
         </a>
     </li>
 
-    <li class="nav-item {{ Request::route()->named('assignments.index') ? 'active' : '' }}">
+    <li class="nav-item {{ Request::route()->named('assignments') ? 'active' : '' }}">
         <a class="nav-link {{ Request::route()->named('assignments.index') ? 'active' : '' }}"
             href="{{ route('assignments.index') }}">
             <i class="fas fa-tasks text-yellow"></i> Asignaciones
+        </a>
+    </li>
+
+    <li class="nav-item {{ Request::route()->named('clients.index') ? 'active' : '' }}">
+        <a class="nav-link {{ Request::route()->named('clients.index') ? 'active' : '' }}"
+            href="{{ route('clients.index') }}">
+            <i class="fas fa-users text-red"></i> Clientes
         </a>
     </li>
 </ul>

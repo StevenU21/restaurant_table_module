@@ -6,11 +6,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
 class Assignment extends Model
 {
     use HasFactory;
     use LogsActivity;
+    use HasSlug;
 
     protected $fillable = [
         'register_date',
@@ -24,6 +27,20 @@ class Assignment extends Model
         'reservation_time',
     ];
 
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom(function ($assignment) {
+                return $assignment->client->name . '_' .  $assignment->table->number;
+            })
+            ->saveSlugsTo('slug');
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     public function table()
     {
         return $this->belongsTo(Table::class);
@@ -32,7 +49,7 @@ class Assignment extends Model
     public function client()
     {
         return $this->belongsTo(Client::class);
-    } 
+    }
 
     public function user()
     {

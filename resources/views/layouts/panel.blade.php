@@ -17,6 +17,10 @@
     <!-- CSS Files -->
     <link href="{{ asset('css/argon-dashboard.css?v=1.1.2') }}" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+    @vite('resources/js/app.js')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
     <style>
         @keyframes toaster {
             0% {
@@ -188,6 +192,12 @@
     <!--   Optional JS   -->
     <script src="{{ asset('js/plugins/chart.js/dist/Chart.min.js') }}"></script>
     <script src="{{ asset('js/plugins/chart.js/dist/Chart.extension.js') }}"></script>
+
+    <!-- Include Choices JavaScript (latest) -->
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+    <!-- Or versioned -->
+    <script src="https://cdn.jsdelivr.net/npm/choices.js@9.0.1/public/assets/scripts/choices.min.js"></script>
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/js/bootstrap-datepicker.min.js">
     </script>

@@ -8,54 +8,60 @@ use App\Models\Table;
 use App\Models\User;
 use App\Models\Client;
 use App\Models\Invoice;
+use Exception;
+use Illuminate\Support\Facades\Log;
 
 class AssignmentController extends Controller
 {
     public function index()
     {
-        $assignments = Assignment::with('table', 'client', 'user')->paginate(5);
+        $assignments = Assignment::with('table', 'client', 'user')->latest()->paginate(5);
         return view('assignments.index', compact('assignments'));
     }
 
     public function create()
     {
         $assignment = new Assignment();
-        $user = new User();
-        $client = new Client();
-        $client->user()->associate($user);
 
-        $tables = Table::available()->get();
-        return view('assignments.create', compact('assignment', 'tables', 'user', 'client'));
+        // Obtener todas las tablas disponibles con sus tipos
+        $tables = Table::with('type')->available()->get();
+
+        // Obtener todos los clientes con sus usuarios asociados
+        $clients = Client::with('user')->get();
+
+        return view('assignments.create', compact('assignment', 'tables', 'clients'));
     }
 
     public function store(AssignmentRequest $request)
     {
-        $assignment = $this->createAssignment($request);
-        $this->updateTableStatus($request->table_id);
-        $this->createInvoice($request->assignment_type, $assignment);
+        try {
+            $assignment = $this->createAssignment($request);
+            $this->updateTableStatus($request->table_id);
+            $this->createInvoice($request->assignment_type, $assignment);
 
-        return redirect()->route('assignments.index')->with('success', 'Asignación Registrada');
+            // Devolver una respuesta JSON en lugar de una redirección
+            return response()->json([
+                'success' => true,
+                'message' => 'Asignación Registrada',
+                'assignment' => $assignment
+            ]);
+        } catch (Exception $exception) {
+            // Devolver una respuesta JSON en caso de error
+            return response()->json([
+                'success' => false,
+                'message' => $exception->getMessage()
+            ], 400);
+        }
     }
 
     private function createAssignment(AssignmentRequest $request)
     {
         $assignment = new Assignment();
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-        ]);
-
-        $client = Client::create([
-            'user_id' => $user->id,
-            'phone' => $request->phone,
-        ]);
-
         $registerDate = now()->toDateString();
         $registerTime = now()->toTimeString();
 
         $assignment->fill($request->validated() + [
-            'client_id' => $client->id,
             'register_date' => $registerDate,
             'register_time' => $registerTime,
             'user_id' => auth()->user()->id,
@@ -113,7 +119,8 @@ class AssignmentController extends Controller
         $client = $assignment->client;
         $client->load('user');
         $tables = Table::all();
-        return view('assignments.edit', compact('assignment', 'tables', 'client'));
+        $clients = Client::all(); // Cargar todos los clientes
+        return view('assignments.edit', compact('assignment', 'tables', 'client', 'clients'));
     }
 
     public function update(AssignmentRequest $request, Assignment $assignment)

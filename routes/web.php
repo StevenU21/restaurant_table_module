@@ -22,10 +22,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::resource('/tables', TableController::class);
-    Route::put('/tables/{table}/status', [TableController::class, 'release'])->name('tables.release');
-
+    
+    Route::get('/assignments/client-list', [AssignmentController::class, 'clientList'])->name('assignments.client-list');
     Route::resource('/assignments', AssignmentController::class);
-
+    
     Route::resource('/invoices', InvoiceController::class)->only(['index']);
     Route::get('/invoices/download/{id}', [InvoiceController::class, 'download'])->name('invoices.download');
 

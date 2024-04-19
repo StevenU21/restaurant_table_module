@@ -31,7 +31,7 @@ class Assignment extends Model
     {
         return SlugOptions::create()
             ->generateSlugsFrom(function ($assignment) {
-                return $assignment->client->name . '_' .  $assignment->table->number;
+                return $assignment->client->name . '_' .  $assignment->table_number;
             })
             ->saveSlugsTo('slug');
     }

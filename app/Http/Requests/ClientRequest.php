@@ -11,7 +11,7 @@ class ClientRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,21 @@ class ClientRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'phone' => 'required|string',
+        ];
+    }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array<string, string>
+     */
+
+    public function messages(): array
+    {
+        return [
+            'phone.required' => 'El Telefono es requerido',
+            'phone.string' => 'El Telefono debe ser un texto',
         ];
     }
 }

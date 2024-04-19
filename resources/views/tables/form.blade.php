@@ -15,7 +15,7 @@
                 <label class="form-control-label" for="type_id"><i class="fas fa-graduation-cap"></i> Tipo de
                     Mesa</label>
 
-                <select name="type_id" class="form-control form-control-alternative">
+                <select name="type_id" id="type_id" class="form-control form-control-alternative">
                     <option disabled>Seleccionar un Tipo</option>
                     @foreach ($types as $type)
                         <option value="{{ $type->id }}"
@@ -26,7 +26,6 @@
                 </select>
             </div>
         </div>
-
     </div>
 </div>
 <hr class="my-4" />
@@ -63,3 +62,7 @@
         </button>
     </div>
 </div>
+
+<script>
+    $('#type_id').selectize();
+</script>

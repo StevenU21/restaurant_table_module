@@ -16,6 +16,8 @@
         "vite": "^5.0"
     },
     "dependencies": {
+        "bootstrap": "^5.3.3",
+        "choices.js": "^10.2.0",
         "jquery": "^3.7.1"
     }
 }

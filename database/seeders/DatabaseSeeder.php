@@ -24,8 +24,8 @@ class DatabaseSeeder extends Seeder
             'password' => 'steven@gmail.com'
         ]);
 
-        Type::factory(500)->create();
-        Client::factory(100)->create();
-        Table::factory(500)->create();
+        Type::factory(100)->create();
+        Client::factory(50)->create();
+        Table::factory(100)->create();
     }
 }

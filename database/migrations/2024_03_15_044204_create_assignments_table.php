@@ -17,6 +17,7 @@ return new class extends Migration
             $table->time('register_time');
             $table->string('assignment_type');
             $table->enum('state', ['pendiente', 'activa', 'cancelada', 'liberada'])->default('pendiente');
+            $table->string('slug')->unique();
 
             $table->date('reservation_date')->nullable();
             $table->time('reservation_time')->nullable();

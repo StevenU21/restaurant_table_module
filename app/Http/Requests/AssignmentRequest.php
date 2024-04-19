@@ -23,6 +23,7 @@ class AssignmentRequest extends FormRequest
     {
         return [
             'table_id' => 'required',
+            'client_id' => 'required',
             'assignment_type' => 'required',
             'reservation_date' => 'date|nullable',
             'reservation_time' => 'date_format:H:i|nullable'
@@ -35,7 +36,8 @@ class AssignmentRequest extends FormRequest
             'table_id.required' => 'La Mesa es requerida',
             'assignment_type.required' => 'Le asignación es requerida',
             'reservation_date.date' => 'La fecha de reserva debe ser una fecha',
-            'reservation_time.date_format' => 'La hora de reserva debe ser una hora'
+            'reservation_time.date_format' => 'La hora de reserva debe ser una hora',
+            'client_id.required' => 'El cliente es requerido'
         ];
     }
 }

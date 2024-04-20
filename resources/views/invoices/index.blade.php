@@ -66,10 +66,10 @@
                             </td>
 
                             <td style="white-space: nowrap; display: flex; align-items: center;">
-                                <button id="downloadInvoiceBtn" data-invoice-id="{{ $invoice->id }}" class="btn btn-primary btn-sm" style="margin-right: 5px;">
+                                <button class="downloadInvoiceBtn btn btn-primary btn-sm" data-invoice-id="{{ $invoice->id }}" style="margin-right: 5px;">
                                     <i class="fas fa-print"></i> Imprimir
                                 </button>
-                            </td>
+                            </td>                            
 
                         </tr>
                         @endforeach

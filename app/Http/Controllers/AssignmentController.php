@@ -91,8 +91,6 @@ class AssignmentController extends Controller
 
     private function createInvoice($assignmentType, $assignment)
     {
-        $invoice = new Invoice();
-
         if ($assignmentType == 'reservar') {
             $price = $assignment->table->type->unit_price;
             $Iva = 0.15;
@@ -101,11 +99,13 @@ class AssignmentController extends Controller
             $details = 'Reserva de Mesa';
         } elseif ($assignmentType == 'asignar') {
             $totalAmmount = 0;
+            $price = 0;
             $details = 'Asignación de Mesa';
         }
 
-        $invoice->create([
+        Invoice::create([
             'total_ammount' => $totalAmmount,
+            'unit_price' => $price,
             'details' => $details,
             'client_id' => $assignment->client_id,
             'assignment_id' => $assignment->id,

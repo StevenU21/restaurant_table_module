@@ -18,7 +18,6 @@ class Table extends Model
     protected $fillable = [
         'table_number',
         'capacity',
-        'table_type',
         'status',
         'type_id'
     ];
@@ -27,7 +26,7 @@ class Table extends Model
     {
         return SlugOptions::create()
             ->generateSlugsFrom(function ($table) {
-                return $table->table_number . '-' . $table->table_type;
+                return $table->table_number . '-' . $table->type->name;
             })
             ->saveSlugsTo('slug');
     }

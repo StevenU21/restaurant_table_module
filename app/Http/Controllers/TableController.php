@@ -51,9 +51,8 @@ class TableController extends Controller
         }
     }
 
-    public function edit(string $id)
+    public function edit(Table $table)
     {
-        $table = Table::find($id);
         $types = Type::all();
         return view('tables.edit', compact('table', 'types'));
     }
@@ -73,9 +72,9 @@ class TableController extends Controller
         }
     }
 
-    public function show(string $id)
+    public function show(Table $table)
     {
-        $table = Table::with('type')->find($id);
+        $table->load('type');
         return view('tables.show', compact('table'));
     }
 

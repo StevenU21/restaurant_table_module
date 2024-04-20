@@ -149,6 +149,7 @@
         $('#createUserModal').modal('hide');
     }
 
+
     function submitCreateUserForm() {
         // Obtener la URL del endpoint para crear un nuevo cliente
         var url = "{{ route('clients.store') }}";
@@ -160,6 +161,12 @@
             phone: $('#phone').val(),
             _token: $('input[name="_token"]').val()
         };
+
+        // Almacenar los datos del formulario de asignación en el almacenamiento local
+        localStorage.setItem('assignmentType', $('#assignment_type').val());
+        localStorage.setItem('tableId', $('#table_id').val());
+        localStorage.setItem('reservationDate', $('#reservation_date').val());
+        localStorage.setItem('reservationTime', $('#reservation_time').val());
 
         // Enviar la solicitud AJAX
         $.ajax({
@@ -201,6 +208,20 @@
             // Eliminar el mensaje de éxito de localStorage
             localStorage.removeItem('success');
         }
+
+        // Si hay datos del formulario de asignación en el almacenamiento local, llenar el formulario con estos datos
+        if (localStorage.getItem('assignmentType')) {
+            $('#assignment_type').val(localStorage.getItem('assignmentType'));
+        }
+        if (localStorage.getItem('tableId')) {
+            $('#table_id').val(localStorage.getItem('tableId'));
+        }
+        if (localStorage.getItem('reservationDate')) {
+            $('#reservation_date').val(localStorage.getItem('reservationDate'));
+        }
+        if (localStorage.getItem('reservationTime')) {
+            $('#reservation_time').val(localStorage.getItem('reservationTime'));
+        }
     });
 
     function submitCreateAssingmentForm() {
@@ -240,6 +261,12 @@
 
                     // Eliminar el mensaje de éxito de localStorage
                     localStorage.removeItem('success');
+
+                    // Eliminar los datos del formulario de asignación de localStorage
+                    localStorage.removeItem('assignmentType');
+                    localStorage.removeItem('tableId');
+                    localStorage.removeItem('reservationDate');
+                    localStorage.removeItem('reservationTime');
                 });
             },
             error: function(xhr, status, error) {

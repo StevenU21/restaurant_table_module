@@ -65,11 +65,11 @@
                                         {{ $table->created_at }}
                                     </td>
                                     <td style="white-space: nowrap; display: flex; align-items: center;">
-                                        <a href="{{ route('tables.show', $table->id) }}" class="btn btn-primary btn-sm"
+                                        <a href="{{ route('tables.show', $table) }}" class="btn btn-primary btn-sm"
                                             style="margin-right: 5px;">
                                             <i class="fas fa-eye"></i> Mostrar
                                         </a>
-                                        <a href="{{ route('tables.edit', $table->id) }}" class="btn btn-info btn-sm"
+                                        <a href="{{ route('tables.edit', $table) }}" class="btn btn-info btn-sm"
                                             style="margin-right: 5px;">
                                             <i class="fas fa-edit"></i> Editar
                                         </a>

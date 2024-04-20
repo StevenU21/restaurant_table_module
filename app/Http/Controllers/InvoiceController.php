@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Invoice;
-use Barryvdh\DomPDF\Facade\Pdf;
+use Dompdf\Dompdf;
+use Illuminate\Support\Facades\Response;
 
 class InvoiceController extends Controller
 {
@@ -18,10 +19,19 @@ class InvoiceController extends Controller
         $invoice = Invoice::with('user', 'client', 'assignment')->find($id);
 
         if ($invoice) {
-            $pdf = Pdf::loadView('invoices.ticket', compact('invoice'));
-            return $pdf->download('invoice_' . $invoice->id . '.pdf');
+            $dompdf = new Dompdf();
+            $dompdf->loadHtml(view('invoices.ticket', compact('invoice')));
+
+            $dompdf->render();
+            $pdf = $dompdf->output();
+            $filename = trim($invoice->client->user->name) . '_' . $invoice->created_at->format('d-m-Y') . '.pdf';
+
+            return Response::make($pdf, 200, [
+                'Content-Type' => 'application/pdf',
+                'Content-Disposition' => 'attachment; filename="' . $filename . '"'
+            ]);
         } else {
-            return redirect()->back();
+            return response()->json(['error' => 'Invoice not found'], 404);
         }
     }
 }

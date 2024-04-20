@@ -18,14 +18,28 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Steven Ulloa',
-            'email' => 'steven@gmail.com',
-            'password' => 'steven@gmail.com'
-        ]);
+        User::factory()->create(
+            [
+                'name' => 'Steven Ulloa',
+                'email' => 'steven@gmail.com',
+                'password' => 'steven@gmail.com'
+            ]
+        );
 
-        Type::factory(100)->create();
-        Client::factory(50)->create();
-        Table::factory(100)->create();
+        User::factory()->create(
+            [
+                'name' => 'Fabian Rodriguez',
+                'email' => 'fabian@gmail.com',
+                'password' => 'fabian@gmail.com'
+            ]
+        );
+
+        User::factory()->create(
+            [
+                'name' => 'Joshuar Centeno',
+                'email' => 'joshuar@gmail.com',
+                'password' => 'joshuar@gmail.com'
+            ]
+        );
     }
 }

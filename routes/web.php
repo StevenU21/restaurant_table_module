@@ -22,8 +22,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::resource('/tables', TableController::class);
+    Route::post('/tables/{id}', [TableController::class, 'release'])->name('tables.release');
     
-    Route::get('/assignments/client-list', [AssignmentController::class, 'clientList'])->name('assignments.client-list');
     Route::resource('/assignments', AssignmentController::class);
     
     Route::resource('/invoices', InvoiceController::class)->only(['index']);

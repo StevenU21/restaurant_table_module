@@ -93,9 +93,8 @@ class TableController extends Controller
         if ($table->status === 'disponible') {
             return redirect()->route('tables.index')->with('error', 'La mesa ya está disponible');
         } else {
-            $table->update([
-                'status' => 'disponible'
-            ]);
+            $table->status = 'disponible';
+            $table->save();
         }
         return redirect()->route('tables.index')->with('released', 'Mesa Liberada');
     }

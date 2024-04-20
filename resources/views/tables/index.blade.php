@@ -76,7 +76,7 @@
                                         <form action="{{ route('tables.release', $table->id) }}" method="POST"
                                             style="display: inline-block; margin: 0; display: flex; align-items: center;">
                                             @csrf
-                                            @method('PUT')
+                                           
                                             <button type="submit" class="btn btn-danger btn-sm">
                                                 <i class="fas fa-trash"></i> Liberar
                                             </button>

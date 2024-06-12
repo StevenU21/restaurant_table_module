@@ -40,7 +40,7 @@ Sigue estos pasos para instalar y configurar el módulo en tu proyecto Laravel:
 2. Navega hasta el directorio del proyecto:
 
     ```bash
-    cd modulo-mesas-restaurante
+    cd restaurant_table_module
     ```
 
 3. Instala las dependencias de PHP utilizando Composer:
@@ -64,7 +64,7 @@ Sigue estos pasos para instalar y configurar el módulo en tu proyecto Laravel:
 6. Configura tu base de datos en el archivo `.env`. Por ejemplo:
 
     ```plaintext
-    DB_CONNECTION=mysql
+    DB_CONNECTION=mysql o sqlite
     DB_HOST=127.0.0.1
     DB_PORT=3306
     DB_DATABASE=nombre_de_tu_base_de_datos
